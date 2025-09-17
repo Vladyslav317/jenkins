@@ -10,7 +10,6 @@ pipeline {
 
         stage('Check Node') {
             steps {
-                sh 'which node'
                 sh 'node -v'
                 sh 'npm -v'
             }
