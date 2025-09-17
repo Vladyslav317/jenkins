@@ -1,10 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:20' }
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Vladyslav317/jenkins.git'
+                checkout([$class: 'GitSCM',
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[url: 'https://github.com/Vladyslav317/jenkins.git']]
+                ])
             }
         }
 
