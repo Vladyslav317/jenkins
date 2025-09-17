@@ -1,19 +1,18 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS"
-    }
-
     stages {
         stage('Checkout') {
             steps {
+                cleanWs()
                 git branch: 'main', url: 'https://github.com/Vladyslav317/jenkins.git'
             }
         }
 
         stage('Install') {
             steps {
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm install'
             }
         }
