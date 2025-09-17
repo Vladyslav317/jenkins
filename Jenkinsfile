@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                cleanWs()
                 git branch: 'main', url: 'https://github.com/Vladyslav317/jenkins.git'
             }
         }
